@@ -1,50 +1,70 @@
-/* ===== RESET ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Poppins", "Segoe UI", sans-serif;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #d46aff, #8a4bff, #ff72b6);
-  background-size: 200% 200%;
-  animation: gradientMove 6s ease infinite;
-}
-
-/* ===== ANIMAÇÃO DO FUNDO ===== */
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* ===== CONTAINER ===== */
+/* Container da calculadora */
 .calculadora {
-  background: rgba(25, 25, 25, 0.8);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 25px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 255, 255, 0.05);
-  padding: 25px;
-  width: 340px;
-  animation: fadeIn 1s ease;
+    width: 260px;
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 15px rgba(0,0,0,0.2);
+    font-family: 'Arial', sans-serif;
 }
 
-/* ===== DISPLAY ===== */
-.display {
-  background: linear-gradient(145deg, #1c1c1c, #111);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  height: 70px;
-  padding: 15px;
-  font-size: 2em;
-  color: #00ffc8;
-  text-align: right;
-  margin-bottom: 20px;
-  box-shadow: inset 0 0 15px rgba(0, 255, 200, 0.15);
-  font-family:
+/* Display da calculadora */
+#resultado {
+    width: 100%;
+    height: 60px;
+    background-color: #222;
+    color: #fff;
+    font-size: 2rem;
+    text-align: right;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow-x: auto;
+}
+
+/* Container dos botões */
+.teclado {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+/* Botões em geral */
+.teclado button {
+    padding: 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+/* Botões de números */
+.teclado button.numero {
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+/* Botões de operações */
+.teclado button.operacao {
+    background-color: #ff9500;
+    color: #fff;
+}
+
+/* Botão C (limpar) */
+.teclado button.limpar {
+    background-color: #ff3b30;
+    color: #fff;
+}
+
+/* Efeito ao passar o mouse */
+.teclado button:hover {
+    transform: scale(1.05);
+}
+
+/* Botão igual */
+.teclado button.igual {
+    background-color: #34c759;
+    color: #fff;
+    grid-column: span 2; /* Ocupa duas colunas */
+}
