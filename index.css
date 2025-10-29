@@ -1,54 +1,120 @@
-*{
+/* Limpeza e Configuração Básica */
+* {
     margin: 0;
-    padding:0 ;
+    padding: 0;
+    /* ESSENCIAL para responsividade e layout: garante que padding e border sejam contados DENTRO da largura/altura do elemento */
+    box-sizing: border-box; 
 }
 
-.fundo{
-    background-image: linear-gradient(45deg, purple, pink);
-    height: 100vh;
-    color: white;
-    font-family:Arial, Helvetica, sans-serif;
-    text-align: center;
-}   
-
-.calculadora{
-    position: absolute;
-    background-color: rgb(44, 44, 44);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%  ); 
-    border-radius:25px ;
-    padding: 15px;
-    text-align: center;
-
+/* Fundo com Centralização (Flexbox) */
+.fundo {
+    /* Gradiente moderno para o fundo */
+    background-image: linear-gradient(45deg, #7c4dff, #ff6e40); 
+    min-height: 100vh; 
     
+    /* Configurações Flexbox para centralizar o conteúdo (a calculadora) */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
 }
 
+/* Container Principal da Calculadora */
+.calculadora {
+    /* Estilo visual da caixa */
+    background-color: #2e2e2e; 
+    border-radius: 20px;
+    padding: 20px;
+    /* Sombra suave para dar profundidade e efeito moderno */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+    width: 300px; /* Largura padrão para desktop */
+}
 
-.botao{
-    width: 50px;
+/* Display de Resultado */
+.display {
+    background-color: #424242; 
     height: 50px;
-    font-size: 25px;
+    margin-bottom: 15px;
+    font-size: 2em;
+    color: white;
+    text-align: right;
+    padding: 10px;
+    border-radius: 10px;
+    overflow: hidden; 
+    line-height: 30px; /* Ajuda a centralizar o texto verticalmente */
+}
+
+/* Container de Botões (CSS Grid Layout) */
+.botoes-container {
+    display: grid;
+    /* Define 4 colunas com largura fracionada (1fr = 1 parte da área disponível), garantindo que sejam iguais e responsivas */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; /* Espaço entre os botões */
+}
+
+/* Estilo Básico do Botão */
+.botao {
+    width: 100%; /* Ocupa 100% da célula do Grid */
+    height: 60px; 
+    font-size: 1.5em;
     cursor: pointer;
-    margin: 3px;
-    background-color:  rgb(31,31,31);
+    background-color: #424242;
     border: none;
     color: white;
+    border-radius: 10px;
+    /* Transições suaves para efeitos de hover/active */
+    transition: background-color 0.2s, transform 0.1s; 
 }
 
-.botao:hover{
-    background-color: black;
+/* Efeitos de Interação */
+.botao:hover {
+    background-color: #555;
 }
 
-#resultado{
-    background-color: white;
-    width: 207px;
-    height:30px ;
-    margin: 5px;
-    font-size: 25px;
-    color: black;
-    text-align: right;
-    padding: 5px;
+.botao:active {
+    transform: scale(0.98); /* Pequena animação ao clicar */
+}
+
+/* Cores Específicas para Botões */
+.operator {
+    background-color: #ff6e40; /* Laranja para operadores */
+}
+
+.clear {
+    background-color: #7c4dff; /* Roxo para o 'C' */
+}
+
+.equal {
+    background-color: #00bcd4; /* Ciano para o '=' */
+}
+
+/* Ajustes Específicos com CSS Grid */
+/* Botão ZERO: Ocupa 2 colunas */
+.zero {
+    grid-column: span 2; 
+}
+
+/* Botão IGUAL: Ocupa a área que começa na linha 4 e vai até a linha 6 (2 linhas de altura) */
+.equal {
+    grid-row: 4 / 6; 
+    /* Ocupa a 4ª coluna (grid-column: start / end) */
+    grid-column: 4 / 5; 
+}
 
 
+/* RESPONSIVIDADE (Media Query para Celulares) */
+/* Estilos aplicados quando a tela tem no MÁXIMO 500px de largura */
+@media (max-width: 500px) {
+    .calculadora {
+        width: 90vw; /* Usa 90% da largura da tela (vw = viewport width) */
+        padding: 10px;
+        margin: 20px; 
+    }
+
+    .botao {
+        height: 50px; /* Botões um pouco menores em celular */
+        font-size: 1.3em;
+    }
 }
