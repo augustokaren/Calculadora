@@ -1,93 +1,136 @@
-/* Fundo da página */
+/* Reset básico para remover margens e paddings padrão do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    /* Garante que o padding e a borda sejam incluídos na largura/altura total do elemento */
+    box-sizing: border-box; 
+}
+
+/* Estilo do fundo principal da página */
 .fundo {
+    /* Gradiente de cor moderno e vibrante */
+    background-image: linear-gradient(45deg, #7c4dff, #ff6e40); /* Roxo vibrante ao Laranja quente */
+    min-height: 100vh; /* Ocupa a altura total da viewport */
+    
+    /* Centraliza o conteúdo (a calculadora) usando Flexbox */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f2f2f2;
+    justify-content: center; /* Alinha horizontalmente ao centro */
+    align-items: center; /* Alinha verticalmente ao centro */
+    
+    /* Fonte moderna e cor do texto */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
 }
 
-/* Container da calculadora */
+/* Contêiner principal da calculadora */
 .calculadora {
-    background-color: #222;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    background-color: #2e2e2e; /* Fundo cinza escuro para a calculadora */
+    border-radius: 20px; /* Bordas arredondadas */
+    padding: 20px; /* Espaçamento interno */
+    /* Sombra para dar profundidade e um efeito "flutuante" */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+    width: 300px; /* Largura padrão para telas maiores */
+    max-width: 90vw; /* Garante que não exceda 90% da largura da tela em dispositivos muito largos */
 }
 
-/* Display da calculadora */
+/* Estilo para a área de exibição do resultado */
 .display {
-    background-color: #000;
-    color: #0f0;
-    font-size: 2rem;
-    text-align: right;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    min-width: 260px;
-    min-height: 50px;
-    overflow-x: auto;
+    background-color: #424242; /* Fundo cinza mais claro para o display */
+    height: 60px; /* Altura do display */
+    margin-bottom: 15px; /* Espaçamento abaixo do display */
+    font-size: 2.2em; /* Tamanho da fonte do resultado */
+    color: white; /* Cor do texto */
+    text-align: right; /* Alinhamento do texto à direita */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    overflow: hidden; /* Garante que números longos não "vazem" */
+    line-height: 40px; /* Ajusta a altura da linha para centralizar verticalmente o texto */
+    word-wrap: break-word; /* Quebra palavras longas para evitar overflow horizontal */
 }
 
-/* Container de botões com grid */
+/* Contêiner para os botões usando CSS Grid */
 .botoes-container {
     display: grid;
-    grid-template-columns: repeat(4, 60px);
-    grid-template-rows: repeat(5, 60px);
-    gap: 10px;
+    /* Define 4 colunas com larguras iguais (1fr = 1 fração do espaço disponível) */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; /* Espaçamento entre as células do grid (entre os botões) */
 }
 
-/* Botões padrão */
+/* Estilo base para todos os botões */
 .botao {
-    font-size: 1.5rem;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.2s;
+    width: 100%; /* Ocupa a largura total da sua célula no grid */
+    height: 60px; /* Altura padrão do botão */
+    font-size: 1.5em; /* Tamanho da fonte */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    background-color: #424242; /* Fundo cinza padrão para botões */
+    border: none; /* Remove a borda padrão do botão */
+    color: white; /* Cor do texto */
+    border-radius: 10px; /* Bordas arredondadas */
+    /* Transição suave para efeitos de hover e active */
+    transition: background-color 0.2s ease, transform 0.1s ease; 
+    -webkit-tap-highlight-color: transparent; /* Remove o destaque de toque no iOS */
 }
 
-/* Botões de números */
-.number {
-    background-color: #444;
-    color: #fff;
+/* Efeito ao passar o mouse sobre o botão */
+.botao:hover {
+    background-color: #555555; /* Fundo um pouco mais claro ao passar o mouse */
 }
 
-.number:hover {
-    background-color: #555;
+/* Efeito ao clicar/tocar no botão */
+.botao:active {
+    transform: scale(0.98); /* Reduz levemente o botão para dar feedback visual de clique */
 }
 
-/* Botão 0 maior */
-.zero {
-    grid-column: span 2; /* ocupa 2 colunas */
-}
-
-/* Botões de operadores */
+/* Estilos específicos para botões de operadores */
 .operator {
-    background-color: #ff9500;
-    color: #fff;
+    background-color: #ff6e40; /* Laranja para operadores */
 }
-
 .operator:hover {
-    background-color: #e08a00;
+    background-color: #e65100; /* Laranja mais escuro no hover */
 }
 
-/* Botão de limpar */
+/* Estilo para o botão 'C' (Limpar) */
 .clear {
-    background-color: #f44336;
-    color: #fff;
+    background-color: #7c4dff; /* Roxo para o botão 'C' */
 }
-
 .clear:hover {
-    background-color: #d7372a;
+    background-color: #6200ea; /* Roxo mais escuro no hover */
 }
 
-/* Botão "=" maior */
+/* Estilo para o botão '=' (Igual) */
 .equal {
-    background-color: #28a745;
-    color: #fff;
-    grid-row: span 2; /* ocupa 2 linhas */
+    background-color: #00bcd4; /* Ciano para o botão '=' */
+    /* Faz o botão '=' ocupar 2 linhas, começando na 4ª linha e indo até a 6ª */
+    grid-row: 4 / 6; 
+    /* Faz o botão '=' ocupar a 4ª coluna */
+    grid-column: 4 / 5; 
+}
+.equal:hover {
+    background-color: #00838f; /* Ciano mais escuro no hover */
 }
 
-.equal:hover {
-    background-color: #218838;
+/* Estilo para o botão '0' (Zero) */
+.zero {
+    /* Faz o botão '0' ocupar 2 colunas */
+    grid-column: span 2; 
+}
+
+/* Media Query para responsividade em telas menores (celulares) */
+@media (max-width: 500px) {
+    .calculadora {
+        width: 95vw; /* Ocupa 95% da largura da viewport em telas pequenas */
+        padding: 15px; /* Reduz o padding */
+        margin: 10px; /* Adiciona uma pequena margem */
+    }
+
+    .display {
+        height: 50px; /* Altura do display ligeiramente menor */
+        font-size: 2em; /* Fonte um pouco menor */
+        line-height: 30px;
+    }
+
+    .botao {
+        height: 55px; /* Altura do botão ligeiramente menor */
+        font-size: 1.3em; /* Fonte do botão ligeiramente menor */
+    }
 }
