@@ -1,46 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora 2.0 </title>
+    <title>Calculadora Moderna</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     
     <div class="fundo">
-        
         <div class="calculadora">
-            
             <div id="resultado" class="display"></div> 
             
             <div class="botoes-container">
-                
-                <button class="botao clear" onclick="clean()">C</button> 
-                <button class="botao operator" onclick="back()">&larr;</button> 
-                <button class="botao operator" onclick="insert('/')">&divide;</button>
-                <button class="botao operator" onclick="insert('*')">&times;</button>
+                <button class="botao clear" data-value="C">C</button>
+                <button class="botao operator" data-value="back">&larr;</button> <button class="botao operator" data-value="/">/</button>
+                <button class="botao operator" data-value="*">X</button> <button class="botao number" data-value="7">7</button>
+                <button class="botao number" data-value="8">8</button>
+                <button class="botao number" data-value="9">9</button>
+                <button class="botao operator" data-value="-">-</button>
 
-                <button class="botao number" onclick="insert('7')">7</button>
-                <button class="botao number" onclick="insert('8')">8</button>
-                <button class="botao number" onclick="insert('9')">9</button>
-                <button class="botao operator" onclick="insert('-')">-</button>
+                <button class="botao number" data-value="4">4</button>
+                <button class="botao number" data-value="5">5</button>
+                <button class="botao number" data-value="6">6</button>
+                <button class="botao operator" data-value="+">+</button>
 
-                <button class="botao number" onclick="insert('4')">4</button>
-                <button class="botao number" onclick="insert('5')">5</button>
-                <button class="botao number" onclick="insert('6')">6</button>
-                <button class="botao operator" onclick="insert('+')">+</button>
+                <button class="botao number" data-value="1">1</button>
+                <button class="botao number" data-value="2">2</button>
+                <button class="botao number" data-value="3">3</button>
+                <button class="botao equal" data-value="=">=</button>
 
-                <button class="botao number" onclick="insert('1')">1</button>
-                <button class="botao number" onclick="insert('2')">2</button>
-                <button class="botao number" onclick="insert('3')">3</button>
-                
-                <button class="botao equal" id="igual" onclick="calcular()">=</button>
-
-                <button class="botao number zero" onclick="insert('0')">0</button>
-                
-                <button class="botao number" onclick="insert('.')">.</button>
-                
+                <button class="botao number zero" data-value="0">0</button>
+                <button class="botao number" data-value=".">.</button>
             </div>
         </div>
     </div>
